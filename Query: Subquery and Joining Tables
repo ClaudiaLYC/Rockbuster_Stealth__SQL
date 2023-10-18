@@ -1,0 +1,75 @@
+
+/*Movies that contributed to the most revenue*/
+SELECT D.title,
+SUM(A.amount) AS total_revenue
+FROM payment A
+JOIN rental B on A.rental_id = B.rental_id
+JOIN inventory C on B.inventory_id = C.inventory_id
+JOIN film D ON C.film_id = D.film_id
+JOIN film_category E On D.film_id = E.film_id
+JOIN category F ON F.category_id = E.category_id
+GROUP BY D.title, genre, D.rating, D.rental_duration
+ORDER BY total_revenue DESC
+LIMIT 10
+
+/*Movies that contributed to the least revenue*/
+SELECT D.title,
+SUM(A.amount) AS total_revenue
+FROM payment A
+JOIN rental B on A.rental_id = B.rental_id
+JOIN inventory C on B.inventory_id = C.inventory_id
+JOIN film D ON C.film_id = D.film_id
+JOIN film_category E On D.film_id = E.film_id
+JOIN category F ON F.category_id = E.category_id
+GROUP BY D.title, genre, D.rating, D.rental_duration
+ORDER BY total_revenue
+
+/*Average rental duration for all videos by genre*/
+SELECT C.name AS genre,
+FROM film A
+JOIN film_category B ON A.film_id = B.film_id
+JOIN category C ON B.category_id = C.category_id
+GROUP BY genre
+ORDER BY avg_rental_duration DESC
+
+/*Revenue by genre */
+SELECT A.name AS genre, SUM(E.amount) AS total_revenue
+FROM category A
+INNER JOIN film_category B ON A.category_id = B.category_id
+INNER JOIN inventory C ON B.film_id = C.film_id
+INNER JOIN rental D ON C.inventory_id = D.inventory_id
+INNER JOIN payment E ON D.rental_id = E.rental_id
+GROUP BY A.name
+ORDER BY total_revenue DESC
+
+/* Film Count by Genre */
+SELECT B.name AS genre,
+COUNT(A.film_id) AS number_of_films
+FROM film_category A
+INNER JOIN category B ON A.category_id = B.category_id
+GROUP BY B.name
+ORDER BY number_of_films DESC
+
+/*Movies that contributed to the most revenue*/
+SELECT D.title,
+SUM(A.amount) AS total_revenue
+FROM payment A
+JOIN rental B on A.rental_id = B.rental_id
+JOIN inventory C on B.inventory_id = C.inventory_id
+JOIN film D ON C.film_id = D.film_id
+JOIN film_category E On D.film_id = E.film_id
+JOIN category F ON F.category_id = E.category_id
+GROUP BY D.title, genre, D.rating, D.rental_duration
+ORDER BY total_revenue DESC
+LIMIT 10
+
+/*Total Revenue per geographic regions*/
+SELECT A.country,
+FROM country A
+JOIN city B ON A.country_id = B.country_id
+JOIN address C ON B.city_id = C.city_id
+JOIN customer D ON C.address_id = D.address_id
+JOIN rental E ON D.customer_id = E.customer_id
+JOIN payment F ON E.rental_id = F.rental_id
+GROUP BY country
+ORDER BY total_revenue DESC

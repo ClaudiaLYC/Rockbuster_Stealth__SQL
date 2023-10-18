@@ -1,0 +1,54 @@
+Summarizing & Cleaning Data in SQL
+
+# Check and clean dirty Data
+## Finding non-uniform data (Film table):  
+SELECT DISTINCT film_id,  
+                title,  
+                description,  
+                release_year,  
+                language_id,  
+                rental_duration,  
+                rental_rate,  
+                length,  
+                replacement_cost,  
+                rating,  
+                last_update  
+FROM film;
+
+## Find duplicate(s)
+Select film_id, title, description, release_year, language_id, rental_duration, length, replacement_cost, rating, last_update,
+       Count (*)
+from film
+Group by film_id, title, description, release_year, language_id, rental_duration, length, replacement_cost, rating, last_update  
+Having Count(*) >1;  
+-- no result set means we have no duplicates
+
+## Missing Data from Film Table
+--Shows any nulls values in any of the specified columns from the table 'film'
+Select film_id, title, description, release_year, language_id, rental_duration, length, replacement_cost, rating, last_update,
+       Count (*)
+from film
+Group by film_id, title, description, release_year, language_id, rental_duration, length, replacement_cost, rating, last_update  
+Having Count(*) = (NULL) OR Count(*) <1; 
+
+
+## Descriptive statistics of film 
+Select min (rental_rate) AS min_rent,
+max (rental_rate) AS min_rent,
+avg (rental_rate) AS avg_rent,
+count (rental_rate) AS count_rent_values,
+count (*) AS count_rows
+from film;
+	 
+## Descriptive statistics of customer
+Select min (customer_id) AS min_customer,
+max (customer_id) AS max_customer,
+avg (customer_id) AS avg_rent,
+count (customer_id) AS count_customer_value,
+count (*) AS count_rows
+from customer;
+				 
+## Mode
+Select mode () within group (order by customer_id)
+as modal_value
+from customer;

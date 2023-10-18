@@ -14,7 +14,7 @@ The Rockbuster Stealth Management Board has asked a series of business questions
 - Do sales figures vary between geographic regions?
 
 # Data Used
-The fictitious data set can be found here: dvdrental.zip  
+The fictitious data set can be found here: [dvdrental.zip](https://github.com/ClaudiaLYC/Rockbuster_Stealth__SQL/blob/main/dvdrental.zip)  
 Source: Career Foundry
 
 # Tools Used

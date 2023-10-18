@@ -38,6 +38,6 @@ Tableau visualization for this project can be accessed here:
 
 # PowerPoint Presentation 
 The Presentation containing all answers to the series of business questions can be found here:
-Rockbuster Final Report_ClaudiaLYC
+[Rockbuster Final Report_ClaudiaLYC](https://github.com/ClaudiaLYC/Rockbuster_Stealth__SQL/blob/main/Task%203.10_Rockbuster%20Final_ClaudiaLYC.pptx)
 
 

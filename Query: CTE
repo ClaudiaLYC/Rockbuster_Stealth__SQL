@@ -23,3 +23,32 @@ INNER JOIN top_countries ON D.country = top_countries.country --filter for top c
 GROUP BY D.country, city
 ORDER BY customer_count_per_city DESC
 LIMIT 10
+
+
+/*Top 10 cities within the top 10 countries*/
+
+--CTE to get the top 10 countries regarding customer count
+WITH top_countries AS (
+ SELECT D.country
+ FROM customer A
+ INNER JOIN address B ON A.address_id = B.address_id
+ INNER JOIN city C ON B.city_id = C.city_id
+ INNER JOIN country D ON C.country_ID = D.country_ID
+ GROUP BY D.country
+ ORDER BY COUNT(*) DESC
+ LIMIT 10)
+--get the top 10 cities within the top countries
+SELECT
+ D.country,
+ C.city,
+ COUNT(*) AS customer_count_per_city
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_ID = D.country_ID
+INNER JOIN top_countries ON D.country = top_countries.country --filter for top countries
+GROUP BY D.country, city
+ORDER BY customer_count_per_city DESC
+LIMIT 10
+
+

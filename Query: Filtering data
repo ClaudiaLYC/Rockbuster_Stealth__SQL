@@ -1,0 +1,70 @@
+SQL Queries for Filtering Data
+
+### Query to find the minimum and maximum replacement costs for each rating category ordered by rating as follows: G, PG, PG-13, R, NC-17
+Select rating, MIN(replacement_cost) AS Minimum_replacement_cost,  
+Max(replacement_cost) AS Maximum_Replacement_Cost  
+From Film  
+Group by rating  
+Order BY Case When rating='G' Then 1  
+              When rating='PG' Then 2  
+              When rating='PG-13' Then 3  
+              When rating='R' Then 4  
+              When rating='NC-17' Then 5  
+End
+
+### Query for film length more than 120 minutes and rental rate more than 2.99
+Select film_id,  
+       title,  
+       length,  
+       rental_rate,  
+       description  
+from film  
+where length >120 AND rental_rate>2.99
+
+### Query for rental duration between 3 and 7 days (where 3 and 7 aren’t inclusive)
+Select film_id,  
+       title,  
+       description,  
+       rental_duration  
+From film  
+Where rental_duration >3 AND rental_duration<7
+
+### Query for film replacement cost is less than 14.99
+Select film_id,  
+       title,  
+       description,  
+       replacement_cost  
+From film  
+where replacement_cost <14.99
+
+### Query for film rating either PG or G
+Select film_id,  
+       title,  
+       rating,  
+       description  
+from film
+where rating IN ('PG','G')
+
+### Query to select movies sorted by title from A to Z, by most recent release year, and  by highest to lowest rental rate
+Select film_id,  
+       title,  
+       release_year,  
+       rental_rate  
+From film  
+Order by title ASC, release_year DESC, rental_rate DESC
+
+### Query to find the average rental rate for each rating category
+Select rating, AVG(rental_duration) AS Average_Rental_Rate  
+From film  
+Group by rating
+
+### Query for the count of movies
+Select film_id, count (film_id) AS count_of_movies  
+From film
+Group by film_id
+
+### Minimum and maximum rental durations for each category
+Select rating, MIN(rental_duration) AS minimum_Rental_Rate,  
+max(Rental_Duration) AS Maximum_Rental_Rate  
+From film  
+Group by rating

@@ -40,4 +40,5 @@ Tableau visualization for this project can be accessed here:
 The Presentation containing all answers to the series of business questions can be found here:
 [Rockbuster Final Report_ClaudiaLYC](https://github.com/ClaudiaLYC/Rockbuster_Stealth__SQL/blob/main/Task%203.10_Rockbuster%20Final_ClaudiaLYC.pptx)
 
-
+# Rockbuster Stealth LLC Data Dictionary
+Data Dictionary can be found here:  [Rockbuster Data Dictionary](https://github.com/ClaudiaLYC/Rockbuster_Stealth__SQL/blob/main/Rockbuster%20Data%20Dictionary_CLYC.pdf)
